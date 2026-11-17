@@ -5,6 +5,12 @@ description: 用 Python(pywin32) 通过 COM/ExtendScript 驱动 Windows 上的 A
 
 # Photoshop COM 自动化（pywin32 + ExtendScript）
 
+## 不适用
+
+- **macOS / Linux**：走 Windows COM，其他平台需要 AppleScript 或 PS 脚本宿主，本手册不覆盖。
+- **Photoshop 网页版 / Express**：没有 COM 接口。
+- **视频渲染**：PS 不是视频工具，逐帧导出请用 ffmpeg 或专门管线。
+
 ## 一、先确认 Photoshop 的 COM 接口是否注册
 
 ```python

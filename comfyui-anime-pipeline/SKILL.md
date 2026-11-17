@@ -5,6 +5,12 @@ description: ComfyUI 本地 AI 绘画管线操作手册——API 调用、国内
 
 # ComfyUI 动漫绘画管线
 
+## 不适用
+
+- **没有独立显卡的机器**：本手册的配置与实测都在 8GB 显存档位，纯 CPU 出图的时间成本不可接受。
+- **要求完全可复现**：采样器、模型版本、节点更新都会改变结果，同一 seed 不保证跨版本一致。
+- **商用授权敏感的场景**：底模、ControlNet、LayerDiffuse 等权重各有自己的许可，需逐个确认，本仓库不代为授权。
+
 > 下文写的 `%COMFY_ROOT%` 指 ComfyUI 安装根目录（含 `ComfyUI/` 与 `python_embeded/`），
 > 默认 `D:\ComfyUI`，可用同名环境变量覆盖。
 

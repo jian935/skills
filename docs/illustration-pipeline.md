@@ -143,7 +143,7 @@ skills/
 
 ## License
 
-这四个 skill 的代码与文档以 **MIT** 授权使用；如需仓库级 LICENSE 文件另行添加。第三方模型、ComfyUI 自定义节点、Photoshop 归各自权利方所有，不在此授权范围内。
+同仓库约定，这四个 skill 以 **MIT** 授权使用；第三方模型与节点归各自权利方所有。第三方模型、ComfyUI 自定义节点、Photoshop 归各自权利方所有，不在此授权范围内。
 
 ---
 
