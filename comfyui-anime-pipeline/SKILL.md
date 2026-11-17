@@ -1,6 +1,6 @@
 ---
 name: comfyui-anime-pipeline
-description: ComfyUI 本地 AI 绘画管线操作手册——API 调用、国内镜像下模型、ControlNet 线稿上色、LayerDiffuse 兼容坑。适用于本地 ComfyUI 部署的使用与扩展；安装目录由环境变量 `COMFY_ROOT` 指定（默认 `D:\ComfyUI`）。
+description: ComfyUI 本地 AI 绘画管线操作手册——API 调用、国内镜像下模型、ControlNet 线稿上色、LayerDiffuse 兼容坑。适用于本地 ComfyUI 部署的使用与扩展；安装目录由环境变量 `COMFY_ROOT` 指定。
 ---
 
 # ComfyUI 动漫绘画管线
@@ -12,7 +12,7 @@ description: ComfyUI 本地 AI 绘画管线操作手册——API 调用、国内
 - **商用授权敏感的场景**：底模、ControlNet、LayerDiffuse 等权重各有自己的许可，需逐个确认，本仓库不代为授权。
 
 > 下文写的 `%COMFY_ROOT%` 指 ComfyUI 安装根目录（含 `ComfyUI/` 与 `python_embeded/`），
-> 默认 `D:\ComfyUI`，可用同名环境变量覆盖。
+> 未设置时，把下文出现的 `%COMFY_ROOT%` 替换成你自己的安装路径。
 
 ## 环境布局
 - 主程序: `%COMFY_ROOT%\ComfyUI`，嵌入式 Python: `%COMFY_ROOT%\python_embeded\python.exe`
@@ -399,14 +399,14 @@ trim=duration={td}, setpts=PTS-STARTPTS, scale=W:H, setsar=1
 
 ## 2026-10-05 装机验收：RMBG / SeedVR2 / RIFE / IPAdapter / LatentSync（8GB 实测）
 
-### 装机清单（全部 0 积分，权重在 D:\ComfyUI）
+### 装机清单（全部 0 积分，权重在 `%COMFY_ROOT%\models`）
 - 抠图：1038lab/ComfyUI-RMBG + RMBG-2.0 ✅ 验证通过
 - 超分：numz/ComfyUI-SeedVR2_VideoUpscaler + seedvr2_ema_3b_fp8 ✅ 验证通过
 - 插帧：Fannovel16/ComfyUI-Frame-Interpolation + rife49.pth ✅ 节点就绪
 - 一致性：cubiq/ComfyUI_IPAdapter_plus + CLIP-ViT-H-14 + ip-adapter-plus_sdxl ✅ 节点就绪
 - 口型：ShmuelRonen/ComfyUI-LatentSyncWrapper + LatentSync-1.6 ⚠️ 8GB 跑不动（见下）
 - I/O：Kosinkadink/ComfyUI-VideoHelperSuite
-- 权重下载脚本 `D:\ComfyUI\_wb_download.py`（HF 镜像）、节点脚本 `_wb_install_nodes.sh`
+- 权重下载脚本 `%COMFY_ROOT%\_wb_download.py`（HF 镜像）、节点脚本 `_wb_install_nodes.sh`
 
 ### RMBG 节点坑
 - API 调用必须显式传全部 optional 参数（process_res/sensitivity/mask_blur/mask_offset/invert_output/refine_foreground/background/background_color），缺一个就 KeyError。
@@ -427,12 +427,12 @@ trim=duration={td}, setpts=PTS-STARTPTS, scale=W:H, setsar=1
 ### LatentSync 1.6：8GB 显存不可用（已打补丁保住可维护性）
 - unet 权重 5GB fp32，模型常驻 ~6.7GB 后必 OOM，fraction 0.95 也救不回。上次跑通的显存下限经验是 12GB+。
 - 已打补丁（备份 nodes.py.bak/.bak2）：
-  1. 缓存目录 `~/.latentsync16_models` → `D:\ComfyUI\_cache`（别写 C 盘）
+  1. 缓存目录 `~/.latentsync16_models` → `%COMFY_ROOT%\_cache`（别写 C 盘）
   2. `torchaudio.save` → soundfile 直写（绕开 torchcodec）
   3. `torchvision.io.write_video`（0.28 已删）→ imageio.mimsave
   4. DeepCache 会复制一份 UNet，<14GB 显存自动跳过
   5. 低端档 BATCH_SIZE=2 + 混合精度；memory fraction 0.95
-  6. 它自带的 pip 依赖检查子流程会被 HTTP 代理卡死——手动放标记文件 `D:\ComfyUI\_cache\.latentsync16_dependencies_installed` 跳过
+  6. 它自带的 pip 依赖检查子流程会被 HTTP 代理卡死——手动放标记文件 `%COMFY_ROOT%\_cache\.latentsync16_dependencies_installed` 跳过
 - ffmpeg 需在 PATH：`%COMFY_ROOT%\_bin\ffmpeg.exe`，启动 ComfyUI 时挂上。
 - **卡通 Q 版脸 LatentSync 检测不到**（训练于真人脸），Q 版数字人口型仍走程序化驱动或云端。
 - 下一步候选：MuseTalk（~2GB，8GB 可跑）替代 LatentSync 做真人口型。

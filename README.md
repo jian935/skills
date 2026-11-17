@@ -14,6 +14,9 @@
 上面四个构成一条「出图 → 抠图 → 线稿 → 分层 → PSD」的完整链路，串法与依赖见
 [docs/illustration-pipeline.md](./docs/illustration-pipeline.md)。
 
+每个 skill 目录内另有 `README.md`：一句话定位、适合谁、脚本清单、效果图与边界，不必先读长篇 `SKILL.md`。
+`SKILL.md` 是给 agent 读的执行手册，`README.md` 是给人看的入口。
+
 单独发布的 skill（不在本仓库内）：
 
 - [complaint-to-eval](https://github.com/jian935/complaint-to-eval) —— 把用户抱怨/issue/评价转成待评审的回归测试候选
