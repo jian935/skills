@@ -6,8 +6,8 @@
 
 | Skill | 目录 | 说明 | 状态 |
 |---|---|---|---|
-| 伪厚涂分层插画 | [`pseudo-impasto-layered-illustration`](./pseudo-impasto-layered-illustration/) | 提示词或参考图 → 19 图层 PSD（6 组 + 13 层），13 层全开逐像素等于成品 | 可用 |
-| 动漫成图转 PSD | [`anime-lineart-psd-pipeline`](./anime-lineart-psd-pipeline/) | 二次元成图 → 白底 2.5px 线稿 + 20 层可上色 PSD（抠图 / 分层 / COM 组装） | 可用 |
+| 伪厚涂分层插画 | [`pseudo-impasto-layered-illustration`](./pseudo-impasto-layered-illustration/) | 提示词或参考图 → 默认 19 图层 PSD（6 组 + 13 层），13 层全开逐像素等于成品；组名/层名/混色可改 | 可用 |
+| 动漫成图转 PSD | [`anime-lineart-psd-pipeline`](./anime-lineart-psd-pipeline/) | 二次元成图 → 白底 2.5px 线稿 + 约 20 层可上色 PSD（抠图 / 分层 / COM 组装，层数随底色块增减） | 可用 |
 | Photoshop 自动化 | [`photoshop-com-automation`](./photoshop-com-automation/) | pywin32 + COM/ExtendScript 驱动 PS：新建、图层、选区填色、文字、批处理、导出 | 可用 |
 | ComfyUI 绘画管线 | [`comfyui-anime-pipeline`](./comfyui-anime-pipeline/) | 本地 ComfyUI 的 API 调用、模型下载、ControlNet 上色、显存配置与已知坑 | 可用 |
 
