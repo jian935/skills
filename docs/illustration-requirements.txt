@@ -1,0 +1,7 @@
+# 绘画管线四个 skill 的 Python 依赖（Python 3.11+）
+Pillow>=10.0
+numpy>=1.24
+opencv-python-headless>=4.8      # 线稿/分层用到 cv2
+rembg>=2.0.50                    # 抠图，首次运行会下载 isnet-anime 权重
+onnxruntime>=1.16
+pywin32>=306; sys_platform == "win32"   # Photoshop COM
